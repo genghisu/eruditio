@@ -1,0 +1,14 @@
+<div class='flag_wrapper'>
+    {% if flag %}
+        You have already flagged this content:
+        {{flag.details}}
+    {% else %}
+        <form id='flag_form_{{model}}_{{object_id}}' class='xflag_form' method='POST' action='{% url flag node_content_type, object_id %}' class='persistent'>
+            <h2>Why are you flagging this? </h2>
+            {{flag_form.as_div}}
+            <div class='submit_row'>
+                <input type='submit' value='Submit'></input>
+            </div>
+        </form>
+    {% endif %}
+</div>

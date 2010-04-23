@@ -1,0 +1,5 @@
+{% for content in current_page.object_list %}
+    {% include "django_community/elements/content_row.html" %}
+{% endfor %}
+<div class='clear'></div>
+{% include "django_utils/pagination/ajax_pagination.html" %}

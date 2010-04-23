@@ -1,0 +1,24 @@
+{% extends "standard_header_template.html" %}
+
+{% block content_header %}
+    <h2>Sign Up</h2>
+{% endblock %}
+
+{% block main_content %}
+    <div class='content_wrapper'>
+        <form class='community' action='' method='POST'>
+            {{ form.as_div }}
+            <div class='submit_row'>
+                <input type='submit' value='Submit' name='submit' class='submit'>
+            </div>
+        </form>
+        <div class='form_row'>
+            Already have an account? <a href="{% url django-community-standard-login %}?redirect={{redirect_path}}">login here</a>
+        </div>
+    </div>
+{% endblock %}
+
+{% block sidebar %}
+    <div class='right_wrapper'>
+    </div>
+{% endblock %}

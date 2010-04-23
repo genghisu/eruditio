@@ -1,0 +1,35 @@
+{% load markup %}
+{% load django_multivoting_tags %}
+{% load django_tracking_tags %}
+{% load comment_tags %}
+{% load gravatar %}
+
+{% with code_content_type as node_content_type %}
+{% with code as node %}
+{% url code-view code.id as view_url %}
+<div class='object_row'>
+    <div class='stats'>
+        <div class='votes'>
+            <p>{% popularity code %}</p>
+            votes
+        </div>
+        <div class='views'>
+            {{code.mode|capfirst}}
+        </div>
+    </div>
+    <div class='info'>
+        <div class='title'>
+            <a href='{{view_url}}'>{{node.name}}</a>
+        </div>
+        {% include "shared/additional_stats.html" %}
+        <div class='author'>
+            {% with node.user as current_user %}
+                {% include "shared/user_info_small.html" %}
+            {% endwith %}
+            <div class='date_info_small'>posted {{node.date_created|timesince}} ago</div>
+        </div>
+        {% include "django_metatagging/horizontal_tag_list.html" %}
+    </div>
+</div>
+{% endwith %}
+{% endwith %}

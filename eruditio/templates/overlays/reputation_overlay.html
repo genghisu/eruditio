@@ -1,0 +1,14 @@
+<div id="reputation_overlay" class='overlay'>
+    <div class="close"></div>
+    <div id='reputation_overlay_content' class='overlay_content'>
+        {% if islogged %}
+            <p>
+            You do not have enough reputation to perform this action, check out the <a href='{% url info-reputation %}'>reputation FAQ</a> for more information.
+            </p>
+        {% else %}
+            <p>
+            You need to be logged in to perform this action, <a href='{% url community-combined-login %}'>login here</a>.
+            </p>
+        {% endif %}
+    </div>
+</div>

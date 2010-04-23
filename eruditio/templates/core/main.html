@@ -1,0 +1,40 @@
+{% extends "monolithic_template.html" %}
+
+{% block main_content %}
+    <div class='content_wrapper info_wrapper'>
+        <div class='content'>
+            <h1>Django360 Beta</h1>
+            <p>To get a sense of what this site is about, check out <a href='{% url info-about %}'>this</a>.</p>
+            
+            <h1>Available Features</h1>
+            <p>Questions and answer with acceptance.  Markdown enabled.</p>
+            <p>App submission with dependencies tracking via my django_relatedcontent app.</p>
+            <p>Code submission with code highlighting.</p>
+            <p>OpenID login and gravatar integration.</p>
+            <p>Tutorials submissions.</p>
+            <p>Reputation engine.</p>
+            <p>Badges.</p>
+            <p>Voting on content.</p>
+            <p>Moderation of content via community votes.</p>
+            <p>Moderation queue for code an app submissions.</p>
+            <p>Content history tracking of edits similar to Stackoverflow.</p>
+            <p>User history tracking.</p>
+            <p>Limited size of images in markdown.</p>
+            <p>Strip restricted tags from markdown submissions.</p>
+            <p>Community wiki user to cleanup content.</p>
+            <p>Better form data whitelisting.</p>
+            <p>Solr/Haystack integration.</p>
+            <p>Better 404 handlings for all views.</p>
+            
+            <h1>Still in the works</h1>
+            <p>Content rollback.</p>
+            <p>Tag based badges.</p>
+            
+            <h1>Check it out, post some content and let me know your thoughts, thanks.</h1>
+            <p>You've all been seeded with 5000 reputation which will allow you full access to all parts of the site.</p>
+            <p>I've seeded the site with some generated content to let you get a feel.</p>
+            <p>Check out the Contribute tab for content generation functionality.</p>
+            <p>Many areas still need polish, so please submit a question for the bugs that you find.  Appreciate it.</p>
+        </div>
+    </div>
+{% endblock %}

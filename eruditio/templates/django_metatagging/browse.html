@@ -1,0 +1,27 @@
+{% extends "standard_header_template.html" %}
+{% load ajax %}
+
+{% block content_header %}
+    <h2>Tags</h2>
+{% endblock %}
+
+{% block main_content %}
+   <div id='tags_wrapper' class='content_wrapper'>
+        <div class='tag_search'>
+            Content is grouped by tags.  Using good tags makes your questions, answers, and other contributed content more relevant to other users.
+            <form class='tags_field'>
+                <input id="id_tag" type="text" size="51" data="{'target' : 'tags_list', 'link': '{% url browse-tags-ajax-placeholder %}'}" maxlength="100" name="tag"/>
+                <span>Type into this input box to filter the tags based on starting characters.</span>
+                {% ajax_update_keyup id_ tag %}
+            </form>
+        </div>
+        <div id='tags_list'>
+            <ul class='tags_wrapper'>
+            {% for tag in current_page.object_list %}
+                <li><a href='{% url all-objects-with-tag tag.safe_name %}' class='tag'>{{tag}}</a><span class='tag_count'>x {{tag.count}}</span></li>
+            {% endfor %}
+            </ul>
+            {% include "django_utils/pagination/pagination.html" %}
+        </div>
+    </div>
+{% endblock %}

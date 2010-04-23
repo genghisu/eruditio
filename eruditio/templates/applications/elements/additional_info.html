@@ -1,0 +1,67 @@
+{% extends "shared/additional_info.html" %}
+
+{% block additional_info %}
+{{block.super}}
+<div class='version row'>
+    <div class='label'>
+        <span>Version</span>
+    </div>
+    <div class='data'>
+        {{app.version}}
+    </div>
+</div>
+<div class='url row'>
+    <div class='label'>
+        <span>Homepage</span>
+    </div>
+    <div class='data'>
+        <a href='{{app.url}}'>{{app.url}}</a>
+    </div>
+</div>
+<div class='sources row'>
+    <div class='label'>
+        <span>Sources</span>
+    </div>
+    <div class='data'>
+        {% for source in app.sources %}
+            <a href='{{source}}'>{{source}}</a><br/>
+        {% endfor %}
+    </div>
+</div>
+<div class='dependencies row'>
+    <div class='label'>
+        <span>Dependencies</span>
+    </div>
+    <div class='data'>
+        <ul class='tags'>
+        {% for dependency in app.dependencies %}
+            <li><a href='{% url applications-view-app dependency.id %}' class='tag'>{{dependency.name}}</a></li>
+        {% endfor %}
+        </ul>
+    </div>
+</div>
+<div class='pythons row'>
+    <div class='label'>
+        <span>Requires Python</span>
+    </div>
+    <div class='data'>
+        <ul class='tags'>
+        {% for python in app.pythons %}
+            <li><a href='' class='tag'>{{python.name}}</a></li>
+        {% endfor %}
+        </ul>
+    </div>
+</div>
+<div class='djangos row'>
+    <div class='label'>
+        <span>Requires Django</span>
+    </div>
+    <div class='data'>
+        <ul class='tags'>
+        {% for django in app.djangos %}
+            <li><a href='' class='tag'>{{django.name}}</a></li>
+        {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %}

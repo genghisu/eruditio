@@ -1,0 +1,56 @@
+{% extends "split_header_template.html" %}
+{% load ajax %}
+
+{% block content_header %}
+    <h2>Badges</h2>
+{% endblock %}
+
+{% block main_content %}
+   <div id='tags_wrapper' class='content_wrapper'>
+        <div id='badges_list'>
+            <div class='description'>
+                Contributed helpful content, vote for content that you find useful and flag content that does not
+                belong on the site and your actions will be rewarded by badges.  Below is a list of all the badges
+                in addition to the current number of users who have earned each one.
+            </div>
+            <ul class='badges_wrapper'>
+            {% for badge in badges %}
+                <li>
+                    <div class='badge_name'>{% include "django_badges/badge.html" %} x {{ badge.count }}</div>
+                    <div class='badge_description'>{{ badge.description|capfirst }}</div>
+                    <div class='clear'></div>
+                </li>
+            {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% endblock %}
+
+{% block sidebar %}
+    <div class='right_wrapper'>
+        <div class='info_wrapper'>
+            <div>
+	            <a class='badge' href='#'>
+	                <span class='gold_badge'>●</span>
+	                <span class='badge_name'>Gold</span>
+	            </a>
+	            <p>Gold badges are difficult to obtain.  Nuff said.</p>
+            </div>
+            <div>
+                <a class='badge' href='#'>
+                    <span class='silver_badge'>●</span>
+                    <span class='badge_name'>Silver</span>
+                </a>
+                <p>Silver badges are earned by achieving long term goals.  Consistent usage of the site will result
+                a few silver badges.</p>
+            </div>
+            <div>
+                <a class='badge' href='#'>
+                    <span class='bronze_badge'>●</span>
+                    <span class='badge_name'>Bronze</span>
+                </a>
+                <p>Bronze badges come from basic usage of Django360.</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,73 @@
+{% extends "split_header_template.html" %}
+{% load ajax %}
+{% load overlay %}
+{% load comment_tags %}
+{% load markup %}
+{% load django_metatagging_tags %}
+{% load code_highlight_tags %}
+
+{% block content_header %}
+    <h2>{{question.name}}</h2>
+{% endblock %}
+
+{% block main_content %}
+    {% with question_content_type as node_content_type %}
+    {% with question_model as model %}
+    {% with question as node %}
+   <div id='question_wrapper' class='view_wrapper content_wrapper'>
+        <div class='top'>
+            <div class='left'>  
+                <div id='question_{{question.id}}_vote_wrapper' class='voting'>
+                    {% with "standard" as vote_class %}
+                        {% include "django_multivoting/standard_vote.html" %}
+                    {% endwith %}
+                </div>
+            </div>
+            <div class='right'>
+                <div class='description markdown_enabled'>
+                    {{question.question|markdown|highlight_markdown|safe}}
+                </div>
+                {% include "django_qa/elements/question_additional_info.html" %}
+                {% include "django_qa/elements/question_actions.html" %}
+                {% comments node_content_type model question.id "compact" %}
+            </div>
+        </div>
+        <div class='bottom'>
+            <div class='tabbed_header_wrapper'>
+                <h3>Answers</h3>
+                <div id='questions_sort' class='tabbed_sort_wrapper'>
+                    {% include "django_qa/elements/answers_order.html" %}
+                </div>
+                <div class='clear'></div>
+            </div>
+            <div id='answers'>
+                {% include "django_qa/answers.html" %}
+            </div>
+            <div class='answer_form'>
+                {% with answer_content_type as node_content_type %}
+                {% with answer_model as model %}
+                    {% include "django_qa/elements/answer_form.html" %}
+                {% endwith %}
+                {% endwith %}
+            </div>
+        </div>
+    </div>
+    {% endwith %}
+    {% endwith %}
+    {% endwith %}
+{% endblock %}
+
+{% block sidebar %}
+    {% with question as node %}
+    <div class='right_wrapper'>
+        {% associated_tags_for_object node %}
+        {% related_objects node %}
+    </div>
+    {% endwith %}
+{% endblock %}
+
+{% block overlays %}
+    {{block.super}}
+    {% include "overlays/retag_overlay.html" %}
+    {% include "overlays/flag_overlay.html" %}
+{% endblock %}

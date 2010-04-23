@@ -1,0 +1,41 @@
+{% extends "django_wizard/base.html" %}
+
+{% block branding %}
+<h1 id="site-name">Django Wizard: Configuration Management</h1>
+{% endblock %}
+
+{% block bodyclass %}dashboard{% endblock %}
+{% block coltype %}colMS{% endblock %}
+
+{% block content %}
+<div id="content-main">
+    {% for app in apps %}
+        <div class="module">
+        <table summary="">
+        <caption><a href="{% url django-wizard-configure-app app.name %}" class="section">{{app.name}} config options</a></caption>
+            {% for option in app.options %}
+            <tr>
+                <th scope="row"><a href="{% url django-wizard-configure-option option.id %}">{{ option.name }}</a></th>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            {% endfor %}
+        </table>
+        </div>
+        {% if app.fixtures %}
+	        <div class="module">
+	        <table summary="">
+	        <caption><a href="{% url django-wizard-configure-app app.name %}" class="section">{{app.name}} fixture configs</a></caption>
+	            {% for fixture in app.fixtures %}
+	            <tr>
+	                <th scope="row"><a href="{% url django-wizard-configure-fixture fixture.id %}">{{ fixture.full_name}}</a></th>
+	                <td>&nbsp;</td>
+	                <td>&nbsp;</td>
+	            </tr>
+	            {% endfor %}
+	        </table>
+	        </div>
+        {% endif %}
+    {% endfor %}
+</div>
+{% endblock %}

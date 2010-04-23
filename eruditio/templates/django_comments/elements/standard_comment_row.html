@@ -1,0 +1,13 @@
+<div id='comment_{{comment.id}}' class='{{comment_class}}_comment_row'>
+    <div class='intro'>
+        <div class='comment_author'>
+            By {{comment.user.profile.display_name}}
+        </div>
+        <div id='comment_{{comment.id}}_vote_wrapper' class='voting vote_compact'>
+            {% include "django_multivoting/standard_vote.html" %}
+        </div>
+    </div>
+    <div class='body'>
+        {{comment.content}}
+    </div>
+</div>

@@ -1,0 +1,19 @@
+{% extends "standard_header_template.html" %}
+{% load ajax %}
+{% load overlay %}
+{% load comment_tags %}
+{% load markup %}
+{% load django_metatagging_tags %}
+{% load code_highlight_tags %}
+
+{% block content_header %}
+    <a href='{% url code-view-code code.id %}'><h1>Return to main</h1></a>
+{% endblock %}
+
+{% block main_content %}
+   <div id='revisions_wrapper' class='content_wrapper'>
+        <div id='code_wrapper' class='view_full_wrapper full_wrapper'>
+            {% highlight_python code.code %}
+        </div>
+    </div>
+{% endblock %}

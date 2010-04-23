@@ -1,0 +1,14 @@
+{% load ajax %}
+{% load javascript %}
+<a name="comment_form"></a>
+<form id='{{form_id}}' class='{{comment_class}}_comment_form' method='POST' action='{% url ajax-comment node_content_type, node.id, comment_class %}'>
+<div id='{{form_id}}_wrapper' class='{{comment_class}}_comment_form_wrapper'>
+    {{comment_form.as_div}}
+    <div class='submit_row'>
+        <input type='submit' value='Post Comment'></input>
+    </div>
+    <div class='clear'></div>
+</div>
+</form>
+{% validate_form form_id %}
+{% ajax_submit form_id list_id %}

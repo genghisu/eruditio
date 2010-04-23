@@ -1,0 +1,27 @@
+{% load django_reputation_tags %}
+{% load django_badges_tags %}
+{% load gravatar %}
+
+{% associate_reputation current_user %}
+{% associate_badges current_user %}
+<div class='user_info_small'>
+    <img class='image' height="15" width="15" alt="Avatar for user_241_435" src="{% gravatar_for_user current_user %}"/>
+    <div class='user_details'>
+        <a href='{% url community-profile current_user.id current_user.profile.display_name %}'>{{current_user.profile.display_name}}</a>
+        <span class='reputation'>{{current_user.reputation.reputation}}</span>
+        <span class='badges'>
+           {% if current_user.gold_badges %}
+               <span class="gold_badge">●</span>
+               <span class="count">{{current_user.gold_badges}}</span>
+           {% endif %}
+           {% if current_user.silver_badges %}
+               <span class="silver_badge">●</span>
+               <span class="count">{{current_user.silver_badges}}</span>
+           {% endif %}
+           {% if current_user.bronze_badges %}
+               <span class="bronze_badge">●</span>
+               <span class="count">{{current_user.bronze_badges}}</span>
+           {% endif %}
+        </span>
+    </div>
+</div>

@@ -1,0 +1,8 @@
+{% load django_tracking_tags %}
+{% load comment_tags %}
+
+<div class='additional_stats'>
+    <a href='{{view_url}}' class='img_link votes'>{% views node %} views</a>
+    <a href='{{view_url}}' class='img_link comments'>{% comments_count node %} comments</a>
+    <a class='img_link related denied_action' title='NotImplementedError'>0 related </a>
+</div>

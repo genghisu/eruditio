@@ -1,0 +1,2 @@
+class UserHistoryException(Exception):
+    pass

@@ -1,0 +1,10 @@
+======================
+eruditio
+======================
+
+eruditio is a full functioned knowledge sharing engine built on top of
+Django.
+
+For installation instructions, see the file "INSTALL" in this directory.
+For instructions on how to use this application, check out the docs/
+directory.

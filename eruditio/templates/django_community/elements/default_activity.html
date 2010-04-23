@@ -1,0 +1,11 @@
+<li class='activity_row'>
+    <div class='date'>
+        {{user_activity.date_created|timesince}}
+    </div>
+    <div class='action'>
+        {{display_action}}
+    </div>
+    <div class='details'>
+        <a href='{{object_url}}'>{{target_object_name}}</a>
+    </div>
+</li>

@@ -1,0 +1,20 @@
+{% extends "iframe_base.html" %}
+{% load adminmedia admin_list i18n %}
+
+{% block extrahead %} 
+<link rel="stylesheet" type="text/css" href="{% admin_media_prefix %}css/changelists.css" />
+<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/django_relatedcontent.css" />
+{% endblock %}
+
+{% block content %}
+{% for usage in available_usages %}
+    <div class='select_wrapper'>
+	    <div class='selection_group'>
+	    <a class='selection_text' href='{{usage.handler}}'>
+	    <img src='{{STATIC_URL}}img/bullet-icon.png'></img>
+	    <p>{{usage.selectable_model.name}}</p>
+	    </a>
+	    </div>
+    </div>
+{% endfor %}
+{% endblock %}

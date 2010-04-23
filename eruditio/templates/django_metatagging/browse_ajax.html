@@ -1,0 +1,6 @@
+<ul class='tags_wrapper'>
+{% for tag in current_page.object_list %}
+    <li><a href='{% url all-objects-with-tag tag.safe_name %}' class='tag'>{{tag}}</a>x {{tag.count}}</li>
+{% endfor %}
+</ul>
+{% include "django_utils/pagination/pagination.html" %}

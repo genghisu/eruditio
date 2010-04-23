@@ -1,0 +1,8 @@
+{% for history in user_history %}
+    {% include "django_community/elements/activity_row.html" %}
+{% endfor %}
+{% with activity_page as current_page %}
+{% with activity_page_range as page_range %}
+    {% include "django_utils/pagination/ajax_pagination.html" %}
+{% endwith %}
+{% endwith %}

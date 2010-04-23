@@ -1,0 +1,26 @@
+{% extends "django_wizard/base.html" %}
+
+{% block branding %}
+<h1 id="site-name">Configuring {{option.name}}</h1>
+{% endblock %}
+
+{% block bodyclass %}change-form{% endblock %}
+{% block coltype %}colMS{% endblock %}
+
+{% block content %}
+<div id="content-main">
+<div id="content" class="colM">
+    <h1> Configure {{option.name}}</h1>
+       <form id="config_form" method="post" action="" enctype="multipart/form-data">
+       <div>
+            <fieldset class="module aligned">
+            {{form.as_div}}
+            </fieldset>
+            <div class="submit-row">
+                <input class="default" type="submit" name="_save" value="Save"/>
+            </div>
+       </div>
+       </form>
+</div>
+</div>
+{% endblock %}

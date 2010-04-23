@@ -1,0 +1,13 @@
+{% extends "shared/additional_info.html" %}
+
+{% block additional_info %}
+{{block.super}}
+<div class='version row'>
+    <div class='label'>
+        <span>Mode</span>
+    </div>
+    <div class='data'>
+        <a href='' class='tag'>{{code.mode|capfirst}}</a>
+    </div>
+</div>
+{% endblock %}

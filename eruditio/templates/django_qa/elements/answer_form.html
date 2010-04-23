@@ -1,0 +1,14 @@
+{% load javascript %}
+
+{% if community_user and islogged %}
+<form id='question_answer_form' class='contribute_form' method='POST' action=''>
+    <a name='qa_form'></a>
+    {{form.as_div}}
+    <div class='submit_row'>
+        <input type='submit' class='submit' value='Answer Question'></input>
+    </div>
+    {% wmd id_answer answer_form_wmd_preview %}
+</form>
+{% else %}
+    <p>To post answers, <a href='{% url community-combined-login %}?redirect={{PATH}}'>login here</a>.</p>
+{% endif %}

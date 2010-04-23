@@ -1,0 +1,675 @@
+[
+   {
+      "pk": 45, 
+      "model": "contenttypes.contenttype", 
+      "fields": {
+         "model": "agnostictags", 
+         "name": "agnostic tags", 
+         "app_label": "django_metatagging"
+      }
+   }, 
+   {
+      "pk": 27, 
+      "model": "contenttypes.contenttype", 
+      "fields": {
+         "model": "answer", 
+         "name": "answer", 
+         "app_label": "django_qa"
+      }
+   }, 
+   {
+      "pk": 19, 
+      "model": "contenttypes.contenttype", 
+      "fields": {
+         "model": "app", 
+         "name": "app", 
+         "app_label": "applications"
+      }
+   }, 
+   {
+      "pk": 20, 
+      "model": "contenttypes.contenttype", 
+      "fields": {
+         "model": "apppackage", 
+         "name": "app package", 
+         "app_label": "applications"
+      }
+   }, 
+   {
+      "pk": 21, 
+      "model": "contenttypes.contenttype", 
+      "fields": {
+         "model": "apppackageitem", 
+         "name": "app package item", 
+         "app_label": "applications"
+      }
+   }, 
+   {
+      "pk": 50, 
+      "model": "contenttypes.contenttype", 
+      "fields": {
+         "model": "association", 
+         "name": "association", 
+         "app_label": "django_openidconsumer"
+      }
+   }, 
+   {
+      "pk": 40, 
+      "model": "contenttypes.contenttype", 
+      "fields": {
+         "model": "availablecontentusage", 
+         "name": "available content usage", 
+         "app_label": "django_relatedcontent"
+      }
+   }, 
+   {
+      "pk": 23, 
+      "model": "contenttypes.contenttype", 
+      "fields": {
+         "model": "code", 
+         "name": "code", 
+         "app_label": "code"
+      }
+   }, 
+   {
+      "pk": 22, 
+      "model": "contenttypes.contenttype", 
+      "fields": {
+         "model": "codemode", 
+         "name": "code mode", 
+         "app_label": "code"
+      }
+   }, 
+   {
+      "pk": 24, 
+      "model": "contenttypes.contenttype", 
+      "fields": {
+         "model": "codepackage", 
+         "name": "code package", 
+         "app_label": "code"
+      }
+   }, 
+   {
+      "pk": 25, 
+      "model": "contenttypes.contenttype", 
+      "fields": {
+         "model": "codepackageitem", 
+         "name": "code package item", 
+         "app_label": "code"
+      }
+   }, 
+   {
+      "pk": 31, 
+      "model": "contenttypes.contenttype", 
+      "fields": {
+         "model": "comment", 
+         "name": "comment", 
+         "app_label": "django_comments"
+      }
+   }, 
+   {
+      "pk": 38, 
+      "model": "contenttypes.contenttype", 
+      "fields": {
+         "model": "contentapprovalvote", 
+         "name": "content approval vote", 
+         "app_label": "django_moderation"
+      }
+   }, 
+   {
+      "pk": 41, 
+      "model": "contenttypes.contenttype", 
+      "fields": {
+         "model": "contentassociation", 
+         "name": "content association", 
+         "app_label": "django_relatedcontent"
+      }
+   }, 
+   {
+      "pk": 33, 
+      "model": "contenttypes.contenttype", 
+      "fields": {
+         "model": "contentflag", 
+         "name": "content flag", 
+         "app_label": "django_moderation"
+      }
+   }, 
+   {
+      "pk": 36, 
+      "model": "contenttypes.contenttype", 
+      "fields": {
+         "model": "contentflaginstance", 
+         "name": "content flag instance", 
+         "app_label": "django_moderation"
+      }
+   }, 
+   {
+      "pk": 32, 
+      "model": "contenttypes.contenttype", 
+      "fields": {
+         "model": "contentflagset", 
+         "name": "content flag set", 
+         "app_label": "django_moderation"
+      }
+   }, 
+   {
+      "pk": 34, 
+      "model": "contenttypes.contenttype", 
+      "fields": {
+         "model": "contentflagsetmember", 
+         "name": "content flag set member", 
+         "app_label": "django_moderation"
+      }
+   }, 
+   {
+      "pk": 37, 
+      "model": "contenttypes.contenttype", 
+      "fields": {
+         "model": "contentflagvote", 
+         "name": "content flag vote", 
+         "app_label": "django_moderation"
+      }
+   }, 
+   {
+      "pk": 5, 
+      "model": "contenttypes.contenttype", 
+      "fields": {
+         "model": "contenttype", 
+         "name": "content type", 
+         "app_label": "contenttypes"
+      }
+   }, 
+   {
+      "pk": 39, 
+      "model": "contenttypes.contenttype", 
+      "fields": {
+         "model": "contentusage", 
+         "name": "content usage", 
+         "app_label": "django_relatedcontent"
+      }
+   }, 
+   {
+      "pk": 13, 
+      "model": "contenttypes.contenttype", 
+      "fields": {
+         "model": "django", 
+         "name": "django", 
+         "app_label": "core"
+      }
+   }, 
+   {
+      "pk": 15, 
+      "model": "contenttypes.contenttype", 
+      "fields": {
+         "model": "djangocompatibility", 
+         "name": "django compatibility", 
+         "app_label": "core"
+      }
+   }, 
+   {
+      "pk": 18, 
+      "model": "contenttypes.contenttype", 
+      "fields": {
+         "model": "djangoproject", 
+         "name": "django project", 
+         "app_label": "projects"
+      }
+   }, 
+   {
+      "pk": 30, 
+      "model": "contenttypes.contenttype", 
+      "fields": {
+         "model": "favorite", 
+         "name": "favorite", 
+         "app_label": "django_community"
+      }
+   }, 
+   {
+      "pk": 2, 
+      "model": "contenttypes.contenttype", 
+      "fields": {
+         "model": "group", 
+         "name": "group", 
+         "app_label": "auth"
+      }
+   }, 
+   {
+      "pk": 8, 
+      "model": "contenttypes.contenttype", 
+      "fields": {
+         "model": "logentry", 
+         "name": "log entry", 
+         "app_label": "admin"
+      }
+   }, 
+   {
+      "pk": 4, 
+      "model": "contenttypes.contenttype", 
+      "fields": {
+         "model": "message", 
+         "name": "message", 
+         "app_label": "auth"
+      }
+   }, 
+   {
+      "pk": 58, 
+      "model": "contenttypes.contenttype", 
+      "fields": {
+         "model": "migrationhistory", 
+         "name": "migration history", 
+         "app_label": "south"
+      }
+   }, 
+   {
+      "pk": 49, 
+      "model": "contenttypes.contenttype", 
+      "fields": {
+         "model": "nonce", 
+         "name": "nonce", 
+         "app_label": "django_openidconsumer"
+      }
+   }, 
+   {
+      "pk": 1, 
+      "model": "contenttypes.contenttype", 
+      "fields": {
+         "model": "permission", 
+         "name": "permission", 
+         "app_label": "auth"
+      }
+   }, 
+   {
+      "pk": 54, 
+      "model": "contenttypes.contenttype", 
+      "fields": {
+         "model": "permission", 
+         "name": "permission", 
+         "app_label": "django_reputation"
+      }
+   }, 
+   {
+      "pk": 47, 
+      "model": "contenttypes.contenttype", 
+      "fields": {
+         "model": "popularity", 
+         "name": "popularity", 
+         "app_label": "django_multivoting"
+      }
+   }, 
+   {
+      "pk": 14, 
+      "model": "contenttypes.contenttype", 
+      "fields": {
+         "model": "python", 
+         "name": "python", 
+         "app_label": "core"
+      }
+   }, 
+   {
+      "pk": 16, 
+      "model": "contenttypes.contenttype", 
+      "fields": {
+         "model": "pythoncompatibility", 
+         "name": "python compatibility", 
+         "app_label": "core"
+      }
+   }, 
+   {
+      "pk": 11, 
+      "model": "contenttypes.contenttype", 
+      "fields": {
+         "model": "pythonpackage", 
+         "name": "python package", 
+         "app_label": "core"
+      }
+   }, 
+   {
+      "pk": 12, 
+      "model": "contenttypes.contenttype", 
+      "fields": {
+         "model": "pythonpackagedependency", 
+         "name": "python package dependency", 
+         "app_label": "core"
+      }
+   }, 
+   {
+      "pk": 26, 
+      "model": "contenttypes.contenttype", 
+      "fields": {
+         "model": "question", 
+         "name": "question", 
+         "app_label": "django_qa"
+      }
+   }, 
+   {
+      "pk": 35, 
+      "model": "contenttypes.contenttype", 
+      "fields": {
+         "model": "reason", 
+         "name": "reason", 
+         "app_label": "django_moderation"
+      }
+   }, 
+   {
+      "pk": 51, 
+      "model": "contenttypes.contenttype", 
+      "fields": {
+         "model": "reputation", 
+         "name": "reputation", 
+         "app_label": "django_reputation"
+      }
+   }, 
+   {
+      "pk": 52, 
+      "model": "contenttypes.contenttype", 
+      "fields": {
+         "model": "reputationaction", 
+         "name": "reputation action", 
+         "app_label": "django_reputation"
+      }
+   }, 
+   {
+      "pk": 43, 
+      "model": "contenttypes.contenttype", 
+      "fields": {
+         "model": "reservedtag", 
+         "name": "reserved tag", 
+         "app_label": "django_metatagging"
+      }
+   }, 
+   {
+      "pk": 42, 
+      "model": "contenttypes.contenttype", 
+      "fields": {
+         "model": "reservedtagset", 
+         "name": "reserved tag set", 
+         "app_label": "django_metatagging"
+      }
+   }, 
+   {
+      "pk": 6, 
+      "model": "contenttypes.contenttype", 
+      "fields": {
+         "model": "session", 
+         "name": "session", 
+         "app_label": "sessions"
+      }
+   }, 
+   {
+      "pk": 7, 
+      "model": "contenttypes.contenttype", 
+      "fields": {
+         "model": "site", 
+         "name": "site", 
+         "app_label": "sites"
+      }
+   }, 
+   {
+      "pk": 10, 
+      "model": "contenttypes.contenttype", 
+      "fields": {
+         "model": "source", 
+         "name": "source", 
+         "app_label": "core"
+      }
+   }, 
+   {
+      "pk": 9, 
+      "model": "contenttypes.contenttype", 
+      "fields": {
+         "model": "sourcemode", 
+         "name": "source mode", 
+         "app_label": "core"
+      }
+   }, 
+   {
+      "pk": 56, 
+      "model": "contenttypes.contenttype", 
+      "fields": {
+         "model": "tag", 
+         "name": "tag", 
+         "app_label": "tagging"
+      }
+   }, 
+   {
+      "pk": 57, 
+      "model": "contenttypes.contenttype", 
+      "fields": {
+         "model": "taggeditem", 
+         "name": "tagged item", 
+         "app_label": "tagging"
+      }
+   }, 
+   {
+      "pk": 17, 
+      "model": "contenttypes.contenttype", 
+      "fields": {
+         "model": "tutorial", 
+         "name": "tutorial", 
+         "app_label": "tutorials"
+      }
+   }, 
+   {
+      "pk": 3, 
+      "model": "contenttypes.contenttype", 
+      "fields": {
+         "model": "user", 
+         "name": "user", 
+         "app_label": "auth"
+      }
+   }, 
+   {
+      "pk": 29, 
+      "model": "contenttypes.contenttype", 
+      "fields": {
+         "model": "useropenid", 
+         "name": "user open id", 
+         "app_label": "django_community"
+      }
+   }, 
+   {
+      "pk": 28, 
+      "model": "contenttypes.contenttype", 
+      "fields": {
+         "model": "userprofile", 
+         "name": "user profile", 
+         "app_label": "django_community"
+      }
+   }, 
+   {
+      "pk": 53, 
+      "model": "contenttypes.contenttype", 
+      "fields": {
+         "model": "userreputationaction", 
+         "name": "user reputation action", 
+         "app_label": "django_reputation"
+      }
+   }, 
+   {
+      "pk": 55, 
+      "model": "contenttypes.contenttype", 
+      "fields": {
+         "model": "view", 
+         "name": "view", 
+         "app_label": "django_tracking"
+      }
+   }, 
+   {
+      "pk": 46, 
+      "model": "contenttypes.contenttype", 
+      "fields": {
+         "model": "vote", 
+         "name": "vote", 
+         "app_label": "django_multivoting"
+      }
+   }, 
+   {
+      "pk": 58,
+      "model": "contenttypes.contenttype",
+      "fields": {
+      "model": "migrationhistory",
+      "name": "migration history",
+      "app_label": "south"
+       }
+    },
+    {
+       "pk": 59,
+       "model": "contenttypes.contenttype",
+       "fields": {
+       "model": "download",
+       "name": "download",
+       "app_label": "django_tracking"
+        }
+    },
+    {
+        "pk": 60,
+        "model": "contenttypes.contenttype",
+        "fields": {
+             "model": "all",
+             "name": "all",
+             "app_label": "django_relatedcontent"
+        }
+    },
+    {
+        "pk": 61,
+        "model": "contenttypes.contenttype",
+        "fields": {
+             "model": "moderatedcontent",
+             "name": "moderated content",
+             "app_label": "django_moderation"
+        }
+     },
+      {
+                                    "pk": 67,
+                                    "model": "contenttypes.contenttype",
+                                    "fields": {
+                                         "model": "badge",
+                                         "name": "badge",
+                                         "app_label": "django_badges"
+                                    }
+                                },
+     {
+                                    "pk": 64,
+                                    "model": "contenttypes.contenttype",
+                                    "fields": {
+                                         "model": "modelfield",
+                                         "name": "model field",
+                                         "app_label": "django_contenthistory"
+                                    }
+                                },
+     {
+                                    "pk": 65,
+                                    "model": "contenttypes.contenttype",
+                                    "fields": {
+                                         "model": "modelhistory",
+                                         "name": "model history",
+                                         "app_label": "django_contenthistory"
+                                    }
+                                },
+     {
+                                    "pk": 62,
+                                    "model": "contenttypes.contenttype",
+                                    "fields": {
+                                         "model": "notification",
+                                         "name": "notification",
+                                         "app_label": "django_notify"
+                                    }
+                                },
+      {
+                                    "pk": 63,
+                                    "model": "contenttypes.contenttype",
+                                    "fields": {
+                                         "model": "trackedcontent",
+                                         "name": "tracked content",
+                                         "app_label": "django_contenthistory"
+                                    }
+                                },
+       {
+                                    "pk": 69,
+                                    "model": "contenttypes.contenttype",
+                                    "fields": {
+                                         "model": "userhistory",
+                                         "name": "user history",
+                                         "app_label": "django_userhistory"
+                                    }
+                                },
+         {
+                                    "pk": 68,
+                                    "model": "contenttypes.contenttype",
+                                    "fields": {
+                                         "model": "useraction",
+                                         "name": "user action",
+                                         "app_label": "django_userhistory"
+                                    }
+                                },
+            {
+                                    "pk": 70,
+                                    "model": "contenttypes.contenttype",
+                                    "fields": {
+                                         "model": "badgeinstance",
+                                         "name": "badge instance",
+                                         "app_label": "django_badges"
+                                    }
+                                },
+            {
+                                    "pk": 71,
+                                    "model": "contenttypes.contenttype",
+                                    "fields": {
+                                         "model": "usertrackedcontent",
+                                         "name": "user tracked content",
+                                         "app_label": "django_userhistory"
+                                    }
+                                },
+                                  {
+                                    "pk": 73,
+                                    "model": "contenttypes.contenttype",
+                                    "fields": {
+                                         "model": "reputationcontent",
+                                         "name": "reputation content",
+                                         "app_label": "django_reputation"
+                                    }
+                                },
+                                   {
+                                    "pk": 74,
+                                    "model": "contenttypes.contenttype",
+                                    "fields": {
+                                         "model": "communitywikicontent",
+                                         "name": "community wiki content",
+                                         "app_label": "django_moderation"
+                                    }
+                                },
+                                {
+                                    "pk": 77,
+                                    "model": "contenttypes.contenttype",
+                                    "fields": {
+                                         "model": "configoption",
+                                         "name": "config option",
+                                         "app_label": "django_wizard"
+                                    }
+                                },
+                            {
+                                    "pk": 76,
+                                    "model": "contenttypes.contenttype",
+                                    "fields": {
+                                         "model": "definedconfigoption",
+                                         "name": "defined config option",
+                                         "app_label": "django_wizard"
+                                    }
+                                },
+                                      {
+                                    "pk": 78,
+                                    "model": "contenttypes.contenttype",
+                                    "fields": {
+                                         "model": "configfixture",
+                                         "name": "config fixture",
+                                         "app_label": "django_wizard"
+                                    }
+                                }
+                                
+
+                                
+                                
+                                
+                                
+         
+]

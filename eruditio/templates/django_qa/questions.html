@@ -1,0 +1,29 @@
+{% extends "split_header_template.html" %}
+{% load django_metatagging_tags %}
+
+{% block content_header %}
+    <div class='tabbed_header_wrapper'>
+        <h1 class='tabbed_sort_header'>Questions</h1>
+        <a href='{% url qa-ask %}'><div class='contribute'>Ask Question</div></a>
+        <div id='questions_sort' class='tabbed_sort_wrapper'>
+            {% include "django_qa/elements/questions_order.html" %}
+        </div>
+        <div class='clear'></div>
+    </div>
+{% endblock %}
+
+{% block main_content %}
+    <div id='questions_wrapper' class='content_wrapper'>
+        {% for question in current_page.object_list %}
+            {% include "django_qa/elements/question_row.html" %}
+        {% endfor %}
+        {% include "django_utils/pagination/pagination.html" %}
+    </div>
+{% endblock %}
+
+{% block sidebar %}
+    <div class='right_wrapper'>
+        {% include "sidebar/qa.html" %}
+        {% cloud_for_model question_content_type %}
+    </div>
+{% endblock %}

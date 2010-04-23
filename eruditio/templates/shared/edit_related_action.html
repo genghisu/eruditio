@@ -1,0 +1,12 @@
+{% load ajax %}
+{% load overlay %}
+{% load reputation_access_control %}
+{% load modcontext %}
+
+{% static_with edit_ model _ node.id as link_id %}
+{% if PERMISSIONS.edit %}
+    <a id='{{link_id}}' class='img_link edit_related denied_action' title="This action has not yet been implemented."> edit related </a>
+{% else %}
+    <a id='{{link_id}}' class='img_link edit_related denied_action' rel='#reputation_overlay' title="You do not have enough reputation to access this action."> edit related</a>
+{% endif %}
+{% endstatic_with %}

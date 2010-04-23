@@ -1,0 +1,13 @@
+{% extends "split_header_template.html" %}
+{% load javascript %}
+
+{% block content_header %}
+    <h1>You do not have enough reputation to access this part of the site. In order to {{permission.name}}, you need
+    {{permission.reputation_required}} reputation.</h1>
+{% endblock %}
+
+{% block main_content %}
+{% endblock %}
+
+{% block sidebar %}
+{% endblock %}

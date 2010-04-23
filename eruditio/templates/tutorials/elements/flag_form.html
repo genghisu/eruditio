@@ -1,0 +1,4 @@
+{% with tutorial_model as model %}
+{% url tutorials-flag-tutorial node.id as flag_url %}
+    {% include "django_moderation/flag_form.html" %}
+{% endwith %}

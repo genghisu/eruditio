@@ -1,0 +1,9 @@
+<div class='standard_sidebar'>
+    <h2>Related Tags</h2>
+    <ul>
+        {% for tag in tags %}
+            {% include "django_metatagging/elements/tag_with_count.html" %}
+        {% endfor %}
+        <div class='clear'></div>
+    </ul>
+</div>

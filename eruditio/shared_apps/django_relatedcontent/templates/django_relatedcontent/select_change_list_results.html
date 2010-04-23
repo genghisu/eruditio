@@ -1,0 +1,71 @@
+{% load relatedcontent_tags %}
+{% load modcontext %}
+
+{% if results %}
+<table cellspacing="0">
+<thead>
+<tr>
+{% for header in result_headers %}
+    <th>
+        +
+    </th>
+    <th{{ header.class_attrib }}>
+    {% if header.sortable %}
+        <a href="{{ header.url }}">
+    {% endif %}
+    {{ header.text|capfirst }}
+    {% if header.sortable %}
+        </a>
+    {% endif %}
+    </th>
+{% endfor %}
+</tr>
+</thead>
+<tbody>
+{% for result in results %}
+    {% static_with item_row_ result.0.id as current_row_id %}
+    {% static_with item_ result.0.id as current_link_id %}
+    {% if ajax %}
+	   {% if result.0.already_related %}
+	   <tr id='{{current_row_id}}' class="{% cycle 'row1' 'row2' %} relatedcontent_existing">
+	      <td>
+	           <a id='{{current_link_id}}' class='add_relatedcontent' href="#"></a>
+	           {% disable_update current_link_id current_row_id %}
+	      </td>
+	      {% for item in result.1 %}
+	           {{item}}
+	      {% endfor %}
+	   </tr>
+	   {% else %}
+	   <tr id='{{current_row_id}}' class="{% cycle 'row1' 'row2' %}">
+          <td>
+               <a id='{{current_link_id}}' class='add_relatedcontent' href="#"></a>
+               {% update_target current_link_id target_id data_id ajax_render_url base_content_type base_object_id selectable_content_type result.0.id usage %}
+               {% modify_content_association current_link_id ajax_associate_url base_content_type base_object_id selectable_content_type result.0.id usage true %}
+               {% disable_update current_link_id current_row_id %}
+          </td>
+          {% for item in result.1 %}
+               {{item}}
+          {% endfor %}
+       </tr>
+	   {% endif %}
+	{% else %}
+    <tr id='{{current_row_id}}' class="{% cycle 'row1' 'row2' %}">
+       <td>
+            <a id='{{current_link_id}}' class='add_relatedcontent' href="#"></a>
+            {% update_target current_link_id target_id data_id ajax_render_url base_content_type base_object_id selectable_content_type result.0.id usage %}
+            {% update_data current_link_id data_id selectable_content_type result.0.id %}
+            {% disable_update current_link_id current_row_id %}
+            {% check_related_item data_id selectable_content_type result.0.id current_row_id current_link_id %}
+       </td>
+       {% for item in result.1 %}
+            {{item}}
+       {% endfor %}
+    </tr>
+    {% endif %}
+    {% endstatic_with %}
+    {% endstatic_with %}
+{% endfor %}
+</tbody>
+</table>
+{% endif %}

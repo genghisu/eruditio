@@ -1,0 +1,24 @@
+{% extends "split_header_template.html" %}
+{% load javascript %}
+
+{% block content_header %}
+    <h2>Contribute Code</h2>
+{% endblock %}
+
+{% block main_content %}
+   <div class='content_wrapper'>
+        <form id='contribute_code_form' class='contribute_form' action='' method='POST'>
+            {{form.as_div}}
+            <div class='submit_row'>
+                <input type='submit' value='Submit Code' name='submit' class='submit'>
+            </div>
+        </form>
+        {% wmd id_description code_form_wmd_preview %}
+    </div>
+{% endblock %}
+
+{% block sidebar %}
+    <div class='right_wrapper'>
+        {% include "sidebar/contribute_guidelines.html" %}
+    </div>
+{% endblock %}

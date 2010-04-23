@@ -1,0 +1,8 @@
+{% url applications-flag-app node.id as flag_url %}
+{% url applications-retag-app node.id as retag_url %}
+{% url applications-edit-app node.id as edit_url %}
+
+<div class='actions'>
+{% include "shared/actions.html" %}
+{% include "applications/elements/edit_dependencies_action.html" %}
+</div>

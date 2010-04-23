@@ -1,0 +1,9 @@
+{% load reputation_access_control %}
+
+{% if has_access %}
+    <a id='comment_technique_{{node.id}}' href='#comment_form' class='img_link action add_comment'>add comment</a>
+{% else %}
+    <a id='comment_technique_{{node.id}}' href='#' class='img_link denied_action add_comment' rel='#reputation_overlay'>add comment</a>
+    {% update_deny_message comment_technique_ node.id reputation_overlay_content comment %}
+    {% reputation_overlay comment_technique_ node.id %}
+{% endif %}

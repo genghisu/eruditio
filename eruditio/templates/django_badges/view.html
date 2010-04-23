@@ -1,0 +1,20 @@
+{% extends "standard_header_template.html" %}
+{% load ajax %}
+
+{% block content_header %}
+    <h2>Users with {{badge.name}}</h2>
+{% endblock %}
+
+{% block main_content %}
+   <div id='tags_wrapper' class='content_wrapper'>
+        <div id='badge_users_list'>
+            <ul class='badge_users_wrapper'>
+            {% for current_user in users %}
+                <li>
+                    {% include "shared/user_info_small.html" %}
+                </li>
+            {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% load javascript %}
+{% load modcontext %}
+
+{% static_with comment_body_ comment_target_model _ comment_target_node.id _comment_ comment.id as body_id %}
+{% static_with toggle_comment_ comment_target_model _ comment_target_node.id _comment_ comment.id as toggle_id %}
+<div id='comment_{{comment.id}}' class='{{comment_class}}_comment_row'>
+    <div class='intro'>
+        <div class='comment_author'>
+            By {{comment.user.profile.all.0.display_name}}
+        </div>
+        <div id='comment_{{comment.id}}_vote_wrapper' class='voting vote_compact'>
+            {% with comment as node %}
+            {% with comment_class as vote_class %}
+                {% include "django_multivoting/standard_vote.html" %}
+            {% endwith %}
+            {% endwith %}
+        </div>
+        <div class='comment_toggle'>
+            <a id='{{toggle_id}}' href='#'>show</a>
+            {% toggle_div toggle_id body_id "show" "hide" %}
+        </div>
+    </div>
+    <div id='{{body_id}}' class='body' style='display: none;'>
+        {{comment.content}}
+    </div>
+</div>
+{% endstatic_with %}
+{% endstatic_with %}

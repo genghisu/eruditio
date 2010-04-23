@@ -1,0 +1,21 @@
+{% load reputation_access_control %}
+{% load modcontext %}
+{% load ajax %}
+
+{% static_with vote_up_ model _ node.id as link_id %}
+    {% if PERMISSIONS.vote_up %}
+        <div class='vote'>
+            <a id='{{link_id}}' title='#' href='#'
+                data="{target:'{{model}}_{{node.id}}_vote_wrapper', link:'{% url vote node_content_type, node.id,"up", vote_class %}'}">
+                [+]
+            </a>
+        </div>
+        {% ajax_update link_id %}
+    {% else %}
+        <a id='{{link_id}}' title='#' href='#' rel='#reputation_overlay'>
+            [+]
+        </a>
+        {% update_deny_message link_id reputation_overlay_content vote_up %}
+        {% reputation_overlay link_id %}
+    {% endif %}
+{% endstatic_with %}

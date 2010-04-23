@@ -1,0 +1,19 @@
+{% extends "standard_header_template.html" %}
+{% load ajax %}
+
+{% block content_header %}
+    <h1>Users</h1>
+{% endblock %}
+
+{% block main_content %}
+   <div id='tags_wrapper' class='content_wrapper'>
+        <ul class='users_list'>
+            {% for current_user in current_page.object_list %}
+                <li>
+                    {% include "shared/user_info.html" %}
+                </li>
+            {% endfor %}
+        </ul>
+        {% include "django_utils/pagination/pagination.html" %}
+    </div>
+{% endblock %}

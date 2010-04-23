@@ -1,0 +1,42 @@
+{% load gravatar %}
+{% load django_contenthistory_tags %}
+
+<div class='additional_info'>
+{% block additional_info %}
+    <div class='author row'>
+        <div class='label'>
+            <span>Author</span>
+        </div>
+        <div class='data'>
+            {% with node.user as current_user %}
+                {% include "shared/user_info.html" %}
+            {% endwith %}
+            <div class='date_info'>posted {{node.date_created|timesince}} ago</div>
+        </div>
+    </div>
+    {% associate_latest_edit node %}
+    {% if node.edit %}
+    <div class='edits row'>
+        <div class='label'>
+            <span>Edits</span>
+        </div>
+        <div class='data'>
+            {% with node.edit.user as current_user %}
+                {% include "shared/user_info.html" %}
+            {% endwith %}
+            <a href='{% url django-contenthistory-history node_content_type, node.id %}'>
+                <div class='date_info'>edited {{node.edit.date_created|timesince}} ago</div>
+            </a>
+        </div>
+    </div>
+    {% endif %}
+    <div class='tags row'>
+        <div class='label'>
+            <span>Tags</span>
+        </div>
+        <div class='data'>
+            {% include "django_metatagging/horizontal_tag_list.html" %}
+        </div>
+    </div>
+{% endblock %}
+</div>

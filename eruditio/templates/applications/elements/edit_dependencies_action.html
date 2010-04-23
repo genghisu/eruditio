@@ -1,0 +1,14 @@
+{% load ajax %}
+{% load overlay %}
+{% load reputation_access_control %}
+{% load modcontext %}
+
+{% static_with edit_dependencies_ model _ node.id as link_id %}
+{% if PERMISSIONS.edit %}
+    <a id='{{link_id}}' href='{% url applications-edit-app-dependencies node.id %}' class='img_link action edit_dependencies'> edit dependencies</a>
+{% else %}
+    <a id='{{link_id}}' class='img_link denied_action edit_dependencies' rel='#reputation_overlay'> edit dependencies</a>
+    {% update_deny_message link_id reputation_overlay_content edit_content %}
+    {% reputation_overlay link_id %}
+{% endif %}
+{% endstatic_with %}

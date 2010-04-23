@@ -1,0 +1,12 @@
+<div id='paginated_div_{{questions_page.unique_id}}'>
+    {% with question_content_type as content_type %}
+        {% for content in questions_page.object_list %}
+            {% include "django_community/elements/content_row.html" %}
+        {% endfor %}
+    {% endwith %}
+    {% with questions_page as current_page %}
+    {% with questions_page_range as page_range %}
+        {% include "django_utils/pagination/ajax_pagination.html" %}
+    {% endwith %}
+    {% endwith %}
+</div>

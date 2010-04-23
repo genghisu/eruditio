@@ -1,0 +1,6 @@
+{% load django_multivoting_tags %}
+{% load text %}
+
+<div class='content_row'>
+    <span class='votes'>{% popularity content %}</span><a href='{% url content-redirect-by-id content_type, content.id %}'>{% limit_text content.name 100 "" %}</a>
+</div>

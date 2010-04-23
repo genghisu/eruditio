@@ -1,0 +1,32 @@
+{% extends "split_header_template.html" %}
+{% load javascript %}
+{% load modcontext %}
+{% load relatedcontent_tags %}
+
+{% block extrastyle %}
+  {{ block.super }}
+  {% include "django_relatedcontent/js/django_relatedcontent.js" %}
+{% endblock %}
+
+{% block content_header %}
+    <h2>Edit {{model}} dependencies</h2>
+{% endblock %}
+
+{% block main_content %}
+    <div class='content_wrapper edit_wrapper'>
+        <form class='edit' action='' method='POST'>
+            <div class='relatedcontent_wrapper'>
+            {% generate_ajax_select base_content_type base_object_id usage update_mode associate_url 800 600 %}
+            {% enable_thickbox select_link_id %}
+            </div>
+            <div class='submit_row'>
+                <a href='{{object_url}}' class='submit'>Done</a>
+            </div>
+        </form>
+     </div>
+{% endblock %}
+
+{% block sidebar %}
+    <div class='right_wrapper'>
+    </div>
+{% endblock %}

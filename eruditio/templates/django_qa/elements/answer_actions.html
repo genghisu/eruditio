@@ -1,0 +1,21 @@
+{% load ajax %}
+{% load overlay %}
+{% load reputation_access_control %}
+{% load smart_if %}
+
+<div class='actions'>
+    {% with answer_content_type as node_content_type %}
+        {% with answer as node %}
+            {% if is_owner %}
+                {% if not question.accepted_answer %}
+                    <a href='{% url qa-accept-answer node.id %}' class='img_link action accept_answer'>accept answer</a>
+                {% endif %}
+            {% endif %}
+            {% url qa-flag-answer answer.id as flag_url %}
+            {% include "django_moderation/flag_action_standard.html" %}
+            <a href='{% url django-qa-view-answer node.id %}' class='img_link action link_comment'>link</a>
+            {% include "django_qa/elements/answer_edit_action.html" %}
+            {% include "shared/delete_action.html" %}
+        {% endwith %}
+    {% endwith %}
+</div>

@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+<title>{% block title %}{% endblock %}</title>
+<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/reset-fonts-grids.css" />
+<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/global.css" />
+<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}thickbox/thickbox.css" />
+<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/django_relatedcontent.css" />
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js" type="text/javascript"></script>
+<script src="{{STATIC_URL}}js/jquery.form.js" type="text/javascript"></script>
+<script src="{{STATIC_URL}}js/jquery.metadata.js" type="text/javascript"></script>
+<script src="{{STATIC_URL}}js/jquery.utils.js" type="text/javascript"></script>
+<script src="{{STATIC_URL}}js/jquery.delegate.js" type="text/javascript"></script>
+<script src="{{STATIC_URL}}js/jquery.validate.min.js" type="text/javascript"></script>
+<script src="{{STATIC_URL}}js/jquery.ajax.js" type="text/javascript"></script>
+<script src="{{STATIC_URL}}js/jquery.hanbox.js" type="text/javascript"></script>
+<script src="{{STATIC_URL}}js/jquery.expose.js" type="text/javascript"></script>
+<script src="{{STATIC_URL}}js/jquery.overlay.js" type="text/javascript"></script>
+<script src="{{STATIC_URL}}js/init_weapons.js" type="text/javascript"></script>
+<script src="{{STATIC_URL}}wmd/wmd.js" type="text/javascript"></script>
+<script src="{{STATIC_URL}}thickbox/thickbox.js" type="text/javascript"></script>
+{% block extrastyle %}{% endblock %}
+{% block extrahead %}{% endblock %}
+
+<body>
+    {% block overlays %}
+       {% include "overlays/reputation_overlay.html" %}
+    {% endblock %}
+    <div id='doc2' class='wrapper'>
+        <div id='main_content'>
+            <div id='hd' class='wrapper'>
+                {% include "headers/header.html" %}
+            </div>
+            <div id='bd' class='wrapper'>
+                {% block content %}
+                {% endblock %}
+            </div>
+            <div class='base_spacing'>
+            </div>
+            <div id='ft' class='wrapper'>
+                {% include "headers/footer.html" %}
+            </div>
+        </div>
+        <div class='clear'>
+        </div>
+    </div>
+</body>

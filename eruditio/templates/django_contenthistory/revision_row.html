@@ -1,0 +1,45 @@
+{% load javascript %}
+{% load modcontext %}
+
+{% static_with expand_revision_ revision.id as expander_id %}
+{% static_with revision_content_ revision.id as content_id %}
+{% static_with visible_image_ revision.id as visible_id %}
+{% static_with hidden_image_ revision.id as hidden_id %}
+<div class='revision_row'>
+    <div class='header'>
+	    <div class='toggle'>
+	        <a id='{{expander_id}}' href='#'>
+	           <img id='{{visible_id}}' src='{{STATIC_URL}}img/expander.gif'></img>
+	           <img id='{{hidden_id}}' class='hidden' src='{{STATIC_URL}}img/expander.gif'></img>
+	        </a>
+	        {% toggle_div_img expander_id content_id visible_id hidden_id %}
+	    </div>
+	    <div class='count'>
+	        {{forloop.revcounter}}
+	    </div>
+	    <div class='details'>
+	       {% if revision.created %}
+	           Created
+	       {% else %}
+	           Edited {{revision.description}}
+	       {% endif %}
+	    </div>
+	    <div class='editor_info'>
+	       {% with revision.user as current_user %}
+	           {% include "shared/user_info.html" %}
+	       {% endwith %}
+	       <div class='date_info'>edited {{revision.date_created|timesince}} ago</div>
+	    </div>
+    </div>
+    <div id='{{content_id}}' class='content hidden'>
+        {% for field in revision.fields %}
+            <div class='field_name'>{{field.name|capfirst}}</div>
+            <div class='field_content {{field.mode}}'>{{field.content|safe}}</div>
+        {% endfor %}
+    </div>
+    <div class='clear'></div>
+</div>
+{% endstatic_with %}
+{% endstatic_with %}
+{% endstatic_with %}
+{% endstatic_with %}

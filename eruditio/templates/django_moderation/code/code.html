@@ -1,0 +1,29 @@
+{% extends "django_moderation/base_queue_item.html" %}
+{% load markup %}
+{% load code_highlight_tags %}
+{% load gravatar %}
+
+{% block additional_info %}
+<div class='info'>
+    <div class='title'>
+        <a href='#'>{{node.name}}</a>
+    </div>
+    <div class='model'>
+        {{node.model}}
+    </div>
+    <div class='description'>
+         {{node.description|markdown|highlight_markdown|safe}}
+    </div>
+    <div class='code'>
+        {% highlight_python node.code %}
+    </div>
+    <div class='author'>
+        {% with node.user as current_user %}
+                {% include "shared/user_info_small.html" %}
+        {% endwith %}
+        <div class='date_info_small'>posted {{node.date_created|timesince}} ago</div>
+    </div>
+    <div class='clear'></div>
+    {% include "django_metatagging/horizontal_tag_list.html" %}
+</div>
+{% endblock %}
