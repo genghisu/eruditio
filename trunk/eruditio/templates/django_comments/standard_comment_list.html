@@ -1,0 +1,21 @@
+{% load smart_if %}
+{% load django_multivoting_tags %}
+
+{% if comments %}
+    {% for comment in comments %}
+    {% with comment_content_type as node_content_type %}
+	{% with comment as node %}
+	{% with comment_model as model %}
+	{% with comment_class as vote_class %}
+		{% associate_popularity comment %}
+	    {% if comment.popularity > COMMENT_HIDE_THRESHOLD %}
+	        {% include "django_comments/elements/standard_comment_row.html" %}
+	    {% else %}
+	        {% include "django_comments/elements/hidden_standard_comment_row.html" %}
+	    {% endif %}
+	{% endwith %}
+	{% endwith %}
+	{% endwith %}
+	{% endwith %}
+    {% endfor %}
+{% endif %}

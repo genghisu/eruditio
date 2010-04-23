@@ -1,0 +1,13 @@
+{% load ajax %}
+{% load overlay %}
+{% load reputation_access_control %}
+{% load modcontext %}
+
+{% update_context edit_ model _ node.id as link_id %}
+{% if PERMISSIONS.edit %}
+    <a id='{{link_id}}' href='{% url qa-edit-answer answer.id %}' class='img_link action edit_comment'> edit </a>
+{% else %}
+     <a id='{{link_id}}' href='{% url qa-edit-answer answer.id %}' class='img_link action edit_comment' rel='#reputation_overlay'> edit </a>
+    {% update_deny_message link_id reputation_overlay_content edit_content %}
+    {% reputation_overlay link_id %}
+{% endif %}

@@ -1,0 +1,22 @@
+{% extends "monolithic_template.html" %}
+
+{% block content_header %}
+    <h2>Edit profile</h2>
+{% endblock %}
+
+{% block main_content %}
+   <div class='content_wrapper profile_wrapper'>
+        <form action='' method='POST' enctype="multipart/form-data">
+            {{edit_profile_form.as_div}}
+            <div class='submit_row'>
+                <input type='submit' value='Submit' name='submit' class='submit'>
+                <a href='{% url community-profile user.id user.profile.display_name %}' class='submit'>Cancel</a>
+            </div>
+        </form>
+    </div>
+{% endblock %}
+
+{% block sidebar %}
+    <div class='right_wrapper'>
+    </div>
+{% endblock %}

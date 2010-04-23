@@ -1,0 +1,6 @@
+{% load modcontext %}
+
+{% static_with retag_ model node.id as link_id %}
+{% url qa-retag-question node.id as retag_url %}
+    {% include "shared/retag_action.html" %}
+{% endstatic_with %}

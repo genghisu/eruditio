@@ -1,0 +1,5 @@
+<ul class='tags_wrapper'>
+    {% for tag in contributed_tags %}
+        <li><a href='{% url tagged-content tag.safe_name,"questions" %}' class='tag'>{{tag}}</a>x {{tag.count}}</li>
+    {% endfor %}
+</ul>

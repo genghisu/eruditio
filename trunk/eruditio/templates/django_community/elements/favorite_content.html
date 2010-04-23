@@ -1,0 +1,14 @@
+<div id='paginated_div_{{favorites_page.unique_id}}'>
+    {% for favorite in favorites_page.object_list %}
+        {% with favorite.content_type.id as content_type %}
+            {% with favorite.content_object as content %}
+                {% include "django_community/elements/content_row.html" %}
+            {% endwith %}
+        {% endwith %}   
+    {% endfor %}
+    {% with favorites_page as current_page %}
+    {% with favorites_page_range as page_range %}
+        {% include "django_utils/pagination/ajax_pagination.html" %}
+    {% endwith %}
+    {% endwith %}
+</div>

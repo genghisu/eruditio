@@ -1,0 +1,29 @@
+{% extends "split_header_template.html" %}
+{% load django_metatagging_tags %}
+
+{% block content_header %}
+    <div class='tabbed_header_wrapper'>
+        <h1 class='tabbed_sort_header'>Django Tutorials</h1>
+        <a href='{% url tutorials-contribute-tutorial %}'><div class='contribute'>Submit Tutorial</div></a>
+        <div id='code_sort' class='tabbed_sort_wrapper'>
+            {% include "tutorials/elements/order.html" %}
+        </div>
+        <div class='clear'></div>
+    </div>
+{% endblock %}
+
+{% block main_content %}
+    <div id='tutorial_wrapper' class='content_wrapper'>
+        {% for tutorial in current_page.object_list %}
+            {% include "tutorials/elements/tutorial_row.html" %}
+        {% endfor %}
+        {% include "django_utils/pagination/pagination.html" %}
+    </div>
+{% endblock %}
+
+{% block sidebar %}
+    <div class='right_wrapper'>
+        {% include "sidebar/tutorials.html" %}
+        {% cloud_for_model tutorial_content_type %}
+    </div>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% load ajax %}
+{% load reputation_access_control %}
+
+{% ifequal vote_class "standard" %}
+   	{% include "django_multivoting/elements/vote_up.html" %}
+{% else %}
+	{% include "django_multivoting/elements/vote_up_compact.html" %}
+{% endifequal %}
+{% include "django_multivoting/elements/popularity.html" %}
+{% ifequal vote_class "standard" %}
+	{% include "django_multivoting/elements/vote_down.html" %}
+{% else %}
+	{% include "django_multivoting/elements/vote_down_compact.html" %}
+{% endifequal %}

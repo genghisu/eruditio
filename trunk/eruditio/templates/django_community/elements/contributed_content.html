@@ -1,0 +1,42 @@
+<h3> Apps </h3>
+<div id='paginated_div_{{apps_page.unique_id}}' class='subsection'>
+    {% with app_content_type as content_type %}
+        {% for content in apps_page.object_list %}
+            {% include "django_community/elements/content_row.html" %}
+        {% endfor %}
+    {% endwith %}
+    <div class='clear'></div>
+    {% with apps_page as current_page %}
+    {% with apps_page_range as page_range %}
+        {% include "django_utils/pagination/ajax_pagination.html" %}
+    {% endwith %}
+    {% endwith %}
+</div>
+<h3> Code </h3>
+<div id='paginated_div_{{codes_page.unique_id}}' class='subsection'>
+    {% with code_content_type as content_type %}
+        {% for content in codes_page.object_list %}
+            {% include "django_community/elements/content_row.html" %}
+        {% endfor %}
+    {% endwith %}
+    <div class='clear'></div>
+    {% with codes_page as current_page %}
+    {% with codes_page_range as page_range %}
+        {% include "django_utils/pagination/ajax_pagination.html" %}
+    {% endwith %}
+    {% endwith %}
+</div>
+<h3> Tutorials </h3>
+<div id='paginated_div_{{tutorials_page.unique_id}}' class='subsection'>
+    {% with tutorial_content_type as content_type %}
+        {% for content in tutorials_page.object_list %}
+            {% include "django_community/elements/content_row.html" %}
+        {% endfor %}
+    {% endwith %}
+    <div class='clear'></div>
+    {% with tutorials_page as current_page %}
+    {% with tutorials_page_range as page_range %}
+        {% include "django_utils/pagination/ajax_pagination.html" %}
+    {% endwith %}
+    {% endwith %}
+</div>

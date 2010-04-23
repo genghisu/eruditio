@@ -1,0 +1,4 @@
+{% with app_model as model %}
+{% url applications-flag-app node.id as flag_url %}
+    {% include "django_moderation/flag_form.html" %}
+{% endwith %}

@@ -1,0 +1,14 @@
+{% load reputation_access_control %}
+{% load modcontext %}
+{% load ajax %}
+
+{% static_with vote_down_ model as prefix %}
+{% static_with _ node.id as suffix %}
+    <div class='vote'>
+        <a id='vote_down_{{model}}_{{node.id}}' href='#'  rel='#login_overlay'>
+            <img src='{{STATIC_URL}}img/vote-arrow-down.png'></img>
+        </a>
+    </div>
+    {% ajax_check_login suffix message_box prefix %}
+{% endstatic_with %}
+{% endstatic_with %}

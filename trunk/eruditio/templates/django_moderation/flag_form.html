@@ -1,0 +1,20 @@
+<div class='flag_wrapper'>
+    {% if existing_flag %}
+        <form id='flag_form_{{model}}_{{object_id}}' class='xflag_form' method='POST' action='{{flag_url}}?remove=1' class='persistent'>
+            <h2>You have flagged to {{existing_flag.flag.name}} this question. </h2>
+            <p>Reason: {{existing_flag.reason.description}}</p>
+            <p>Details: {{existing_flag.additional_info}}</p>
+            <div class='submit_row'>
+                <input type='submit' value='Remove Flag'></input>
+            </div>
+        </form>
+    {% else %}
+        <form id='flag_form_{{model}}_{{object_id}}' class='xflag_form' method='POST' action='{{flag_url}}' class='persistent'>
+            <h2>Why are you flagging this? </h2>
+            {{form.as_div}}
+            <div class='submit_row'>
+                <input type='submit' value='Submit'></input>
+            </div>
+        </form>
+    {% endif %}
+</div>

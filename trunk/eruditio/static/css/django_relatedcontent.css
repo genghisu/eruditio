@@ -1,0 +1,17 @@
+a.add_relatedcontent {background: transparent url(/static/img/plus-icon.png) no-repeat scroll 0 2px; display: block; height: 50px; width: 50px;}
+div.relatedcontent_field {padding: 5px; height: 185px; width: 100%; border: 1px solid #BBBBBB; background: #FFFFFF;}
+a.relatedcontent_field {padding: 6px 9px; border: 1px solid #BBBBBB; font-size: 12px; margin-top: 15px; display: block; width: 80px; text-align: center; background:#EEEEEE none repeat scroll 0 0;}
+
+.select_wrapper {padding: 10px;}
+div.selection_group {width: 100px; text-align: center; text-decoration: none;}
+a.selection_text {display: block; width: 100px; text-decoration: none;}
+.selection_group img {border: 0px;}
+
+tr.relatedcontent_existing {opacity:0.3;}
+
+div.relatedcontent_item {padding: 5px; width: 40%; float: left;}
+
+div.relatedcontent_div {background:#FFFFFF none repeat scroll 0 0; border:1px solid #BBBBBB; height:300px; padding:5px; width:100%;}
+a.relatedcontent_init {padding: 6px 9px; border: 1px solid #BBBBBB; font-size: 12px; margin-top: 15px; display: block; width: 80px; text-align: center; background:#EEEEEE none repeat scroll 0 0;}
+
+div.relatedcontent_wrapper {padding-top: 10px; padding-bottom: 10px;}

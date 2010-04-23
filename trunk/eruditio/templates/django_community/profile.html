@@ -1,0 +1,75 @@
+{% extends "monolithic_template.html" %}
+{% load gravatar %}
+{% load django_community_tags %}
+{% load django_utils_tags %}
+
+{% block content_header %}
+    <h2>{{user.display_name}}</h2>
+{% endblock %}
+
+{% block main_content %}
+   <div class='content_wrapper profile_wrapper'>
+        <div class='top'>
+            <div class='profile_image'>
+                 <img class="profile_gravatar" height="80" width="80" alt="Avatar for user_241_435" src="{% gravatar_for_user user %}"/>
+                <div class='profile_reputation'> {{user.reputation.reputation}} </div>
+                <div>reputation</div>
+            </div>
+            <ul class='profile_info'>
+                <li><div class='left'>Display Name</div><div class='right'>{{user.display_name}}</div></li>
+                <li><div class='left'>First Name</div><div class='right'>{{user.first_name}}</div></li>
+                <li><div class='left'>Last Name</div><div class='right'>{{user.last_name}}</div></li>
+                <li><div class='left'>Member For</div><div class='right'>{{user.date_joined|timesince}}</div> </li>
+                <li><div class='left'>Last Active</div><div class='right'>{{user.last_login|timesince}}</div></li>
+                <li><div class='left'>Location</div><div class='right'>{{user.location}}</div></li>
+                <li><div class='left'>Age</div><div class='right'>{{user.birthdate|yearsince}}</div></li>
+                <li><div class='left'>Website</div><div class='right'><a href='{{user.website}}'>{{user.website}}</a></div> </li>
+            </ul>
+            {% ifequal community_user.username user.username %}
+                <div class='profile_edit'>
+                    <a href='{% url community-edit-profile %}'>edit</a>
+                    <a href='{% url community-combined-login %}?redirect={% url community-profile community_user.id community_user.display_name %}'>new openid</a>
+                </div>
+            {% endifequal %}
+        </div>
+        <div class='bottom'>
+            <div class='additional_profile_info info_row'>
+                <h2>About</h2>
+                {{user.about_me}}
+            </div>
+            <div class='recent_activity info_row recent_activity'>
+                <h2>Recent Activity</h2>
+                {% include "django_community/elements/recent_activity.html" %}
+            </div>
+            <div class='questions_asked info_row'>
+                <h2>Questions Asked</h2>
+                {% include "django_community/elements/questions_asked.html" %}
+            </div>
+            <div class='answers_given info_row'>
+                <h2>Answers Posted</h2>
+                {% include "django_community/elements/answers_posted.html" %}
+            </div>
+            <div class='contributed_content info_row'>
+                <h2>Contributed Content</h2>
+                {% include "django_community/elements/contributed_content.html" %}
+            </div>
+            <div class='voting_history info_row'>
+                <h2>Voting History</h2>
+                {% include "django_community/elements/voting_history.html" %}
+            </div>
+            <div class='favorites info_row'>
+                <h2>Favorite Content</h2>
+                {% include "django_community/elements/favorite_content.html" %}
+            </div>
+            <div class='badges info_row'>
+                <h2>Badges</h2>
+                {% include "django_community/elements/badges.html" %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block sidebar %}
+    <div class='right_wrapper'>
+    </div>
+{% endblock %}

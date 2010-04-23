@@ -1,0 +1,45 @@
+{% load comment_tags %}
+{% load ajax %}
+{% load overlay %}
+{% load markup %}
+{% load reputation_access_control %}
+{% load gravatar %}
+{% load code_highlight_tags %}
+
+{% with answer_content_type as node_content_type %}
+{% with answer_model as model %}
+{% with answer as node %}
+<a name="answer_{{answer.id}}"></a>
+<div id='answer_{{answer.id}}' class='answer_row {% if answer.accepted %}accepted_answer{% endif %}'>
+    <div class='left'>
+        <div id='answer_{{answer.id}}_vote_wrapper' class='voting'>
+            {% with "standard" as vote_class %}
+                {% include "django_multivoting/standard_vote.html" %}
+            {% endwith %}
+        </div>
+        {% ifequal answer.id question.accepted_answer.id %}
+           <div class='accepted'>
+                <img src="{{STATIC_URL}}img/accept.png"></img>
+           </div>
+        {% endifequal %}
+        <div class='clear'></div>
+    </div>
+    <div class='right'>
+        <div class='answer markdown_enabled'>
+            {{answer.answer|markdown|highlight_markdown|safe}}
+        </div>
+        <div class='author'>
+            {% with answer.user as current_user %}
+                {% include "shared/user_info_small.html" %}
+            {% endwith %}
+            <div class='date_info_small'>answered {{answer.date_created|timesince}} ago</div>
+        </div>
+        {% include "django_qa/elements/answer_actions.html" %}
+        {% comments answer_content_type answer_model answer.id "compact" %}
+        <div class='clear'></div>
+    </div>
+</div>
+{% endwith %}
+{% endwith %}
+{% endwith %}
+

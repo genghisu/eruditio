@@ -1,0 +1,31 @@
+{% load ajax %}
+{% load overlay %}
+{% load modcontext %}
+{% load reputation_access_control %}
+
+{% static_with flag_ model _ node.id as link_id %}
+{% if PERMISSIONS.flag %}
+    <a id='flag_{{model}}_{{node.id}}' 
+        href='#' title='flag this {{model}}' rel='#flag_overlay' 
+        data="{target:'flag_overlay_content', 
+        link:'{{flag_url}}'}" 
+        class='img_link action flag'>
+        flag
+    </a>
+    {% if islogged %}
+        {% overlay link_id %}
+        {% ajax_update_no_effect link_id %}
+    {% else %}
+        {% ajax_check_login flag message_box %}
+    {% endif %}
+{% else %}
+    <a id='flag_{{model}}_{{node.id}}' 
+        rel='#reputation_overlay'
+        data="{target:'flag_overlay_content', 
+        link:'{{flag_url}}'}" 
+        class='img_link flag denied_action'>
+        flag
+    </a>
+    {% reputation_overlay link_id %}
+{% endif %}
+{% endstatic_with %}

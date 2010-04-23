@@ -1,0 +1,21 @@
+{% load reputation_access_control %}
+{% load modcontext %}
+{% load ajax %}
+
+{% static_with vote_down_ model _ node.id as link_id %}
+{% if PERMISSIONS.vote_down %}
+    <div class='vote'>
+        <a id='vote_down_{{model}}_{{node.id}}' 
+            href='#' data="{target:'{{model}}_{{node.id}}_vote_wrapper', link:'{% url vote node_content_type,node.id, "down", vote_class %}'}" title='This game is boring'>
+            <img src='{{STATIC_URL}}img/vote-arrow-down.png'></img>
+        </a>
+    </div>
+    {% ajax_update link_id %}
+{% else %}
+   <a id='vote_down_{{model}}_{{node.id}}' title='#' href='#' rel='#reputation_overlay'>
+        <img src='{{STATIC_URL}}img/vote-arrow-down.png'></img>
+    </a>
+    {% update_deny_message link_id reputation_overlay_content vote_down %}
+    {% reputation_overlay link_id %}
+{% endif %}
+{% endstatic_with %}

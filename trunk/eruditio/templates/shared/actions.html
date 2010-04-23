@@ -1,0 +1,16 @@
+{% load ajax %}
+{% load overlay %}
+{% load reputation_access_control %}
+{% load modcontext %}
+
+{% include "django_moderation/flag_action_standard.html" %}
+
+{% include "shared/retag_action.html" %}
+
+{% include "shared/edit_action.html" %}
+
+{% include "shared/favorite_action.html" %}
+
+{% include "shared/edit_related_action.html" %}
+
+{% include "shared/delete_action.html" %}

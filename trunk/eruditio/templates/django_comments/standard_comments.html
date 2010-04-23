@@ -1,0 +1,44 @@
+{% load javascript %}
+{% load ajax %}
+{% load overlay %}
+{% load reputation_access_control %}
+{% load modcontext %}
+{% load smart_if %}
+
+{% static_with toggle_comment_form_ comment_target_model _ comment_target_node.id as link_id %}
+{% static_with show_all_comments_ comment_target_model _ comment_target_node.id as show_all_link_id %}
+{% static_with show_comments_ comment_target_model _ comment_target_node.id as show_id %}
+{% static_with comment_target_model _ comment_target_node.id _comment_form as form_id %}
+{% static_with form_id _wrapper as wrapper_id %}
+{% static_with comment_target_model _ comment_target_node.id _ comment_list as list_id %}
+
+{% if PERMISSIONS.comment %}
+    <div class='{{comment_class}}_comments_wrapper'>
+        <div id='{{list_id}}' class='{{comment_class}}_comments'>
+            {% include "django_comments/standard_comment_list.html" %}
+        </div>
+        {% if additional_count >= 1 %}
+	        <a id='{{show_all_link_id}}' class='img_link action add_comment' id='{{show_id}}' href='#'
+	        data="{target:'{{list_id}}', link:'{% url django-comments-list comment_target_content_type comment_target_node.id comment_class %}'}">show {{additional_count}} more comments</a>
+	        {% ajax_update show_all_link_id %}
+	        {% hide_div show_all_link_id show_all_link_id %}
+        {% endif %}
+        <a class='img_link action add_comment' id='{{link_id}}' href='#'>add comment</a>
+        {% toggle_div link_id wrapper_id "add comment" "hide" %}
+        {% include "django_comments/standard_comment_form.html" %}
+    </div>
+{% else %}
+   <div class='{{comment_class}}_comments_wrapper'>
+        {% include "django_comments/standard_comment_list.html" %}
+        <a class='img_link action add_comment' id='{{link_id}}' href='#' title='add comment' rel='#reputation_overlay'>add comment</a>
+        {% update_deny_message link_id reputation_overlay_content comment %}
+        {% reputation_overlay link_id %}
+    </div>
+{% endif %}
+
+{% endstatic_with %}
+{% endstatic_with %}
+{% endstatic_with %}
+{% endstatic_with %}
+{% endstatic_with %}
+{% endstatic_with %}

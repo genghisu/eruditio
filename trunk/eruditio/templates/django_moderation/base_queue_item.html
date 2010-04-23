@@ -1,0 +1,23 @@
+{% load django_multivoting_tags %}
+{% load django_tracking_tags %}
+{% load gravatar %}
+
+<div class='moderation_actions'>
+    <a href='{% url moderation-moderate node_content_type node.id "accept" %}' class='moderate_action'>Accept</a>
+    <a href='{% url moderation-moderate node_content_type node.id "reject" %}' class='moderate_action'>Reject</a>
+    <a href='{% url moderation-moderate node_content_type node.id "pass" %}' class='moderate_action'>Pass</a>
+</div>
+<div class='moderation_item'>
+    <div class='stats'>
+        <div class='votes'>
+            <p>{{node.accepts}}</p>
+            accepts
+        </div>
+         <div class='votes'>
+            <p>{{node.rejects}}</p>
+            rejects
+        </div>
+    </div>
+    {% block additional_info %}
+    {% endblock %}
+</div>

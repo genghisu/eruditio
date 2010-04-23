@@ -1,0 +1,20 @@
+{% load ajax %}
+{% load overlay %}
+{% load django_community_tags %}
+{% load reputation_access_control %}
+
+{% if islogged %}
+    <a id='favorite_action' href='#' class='img_link action retag'
+        data="{target:'favorite_link', link:'{% url django-community-favorite node_content_type, node.id %}'}">
+        {% associate_favorite_status node community_user %}
+        {% if not node.already_favorited %}
+            add to favorites
+        {% else %}
+            remove from favorites
+        {% endif %}
+    </a>
+    {% ajax_update favorite_action %}
+{% else %}
+    <a id='favorite_action' class='img_link denied_action retag' rel='#reputation_overlay' title='You need to be logged in to access this action'>add to favorites</a>
+    {% reputation_overlay favorite_action %}
+{% endif %}

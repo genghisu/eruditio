@@ -1,0 +1,61 @@
+{% extends "split_header_template.html" %}
+{% load ajax %}
+{% load overlay %}
+{% load comment_tags %}
+{% load markup %}
+{% load django_metatagging_tags %}
+{% load code_highlight_tags %}
+
+{% block content_header %}
+    <h2>{{tutorial.name}}</h2>
+{% endblock %}
+
+{% block main_content %}
+    {% with tutorial_content_type as node_content_type %}
+    {% with tutorial_model as model %}
+    {% with tutorial as node %}
+    <div id='tutorial_wrapper' class='view_wrapper content_wrapper'>
+        <div class='top'>
+            <div class='left'>  
+                <div id='{{model}}_{{node.id}}_vote_wrapper' class='voting'>
+                    {% with "standard" as vote_class %}
+                        {% include "django_multivoting/standard_vote.html" %}
+                    {% endwith %}
+                </div>
+            </div>
+            <div class='right'>
+                <div class='description markdown_enabled'>
+                    {{tutorial.description|markdown|highlight_markdown|safe}}
+                </div>
+                {% include "tutorials/elements/additional_info.html" %}
+                {% include "tutorials/elements/actions.html" %}
+            </div>
+        </div>
+        <div class='bottom'>
+            <div class="tabbed_header_wrapper">
+                <h3>Comments</h3>
+                <div class="clear"></div>
+            </div>
+            {% comments node_content_type model node.id "compact" %}
+        </div>
+    </div>
+    {% endwith %}
+    {% endwith %}
+    {% endwith %}
+{% endblock %}
+
+{% block sidebar %}
+    {% with tutorial as node %}
+    <div class='right_wrapper'>
+        {% associated_tags_for_object node %}
+        {% related_objects node %}
+    </div>
+    {% endwith %}
+{% endblock %}
+
+{% block overlays %}
+    {{block.super}}
+    {% include "overlays/retag_overlay.html" %}
+    {% include "overlays/flag_overlay.html" %}
+    {% include "overlays/reputation_overlay.html" %}
+{% endblock %}

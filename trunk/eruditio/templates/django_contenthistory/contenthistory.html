@@ -1,0 +1,17 @@
+{% extends "standard_header_template.html" %}
+{% load ajax %}
+
+{% block content_header %}
+    <a href='{{view_url}}'><h1>Return To Content</h1></a>
+{% endblock %}
+
+{% block main_content %}
+   <div id='revisions_wrapper' class='content_wrapper'>
+        <div class='revisions_list'>
+            {% for revision in revisions %}
+                {% include "django_contenthistory/revision_row.html" %}
+            {% endfor %}
+            <div class='clear'></div>
+        </div>
+    </div>
+{% endblock %}

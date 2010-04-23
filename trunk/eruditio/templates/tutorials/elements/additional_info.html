@@ -1,0 +1,13 @@
+{% extends "shared/additional_info.html" %}
+
+{% block additional_info %}
+{{block.super}}
+<div class='source row'>
+    <div class='label'>
+        <span>Source</span>
+    </div>
+    <div class='data'>
+        <a href='{{node.url}}'>{{node.url}}</a>
+    </div>
+</div>
+{% endblock %}

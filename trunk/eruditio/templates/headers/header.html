@@ -1,0 +1,35 @@
+<div id='header'>
+    <div class='sub'>
+    </div>
+    <div class='main'>
+        <div class='logo'>
+            <a href='{% url main %}'>Django360</a>
+        </div>
+        <div class='search'>
+            <form id='search_form' action='{% url search %}' method='GET'>
+                <input id="id_q" type="text" value="" name="q" />
+                <input id="search_submit" type="submit" value="Search" />
+            </form>
+        </div>
+        <div class='auth'>
+ 			{% if islogged and not isAnon %}
+                Welcome, <a href='{% url community-profile community_user.id community_user.profile.display_name %}'>{{community_user.profile.display_name}}</a> |
+                <a href='{% url community-combined-logout %}?redirect={{PATH}}'>Logout</a>
+            {% else %}
+                <a href='{% url community-combined-login %}?redirect={{PATH}}'>Login</a> |
+                <a href='{% url community-combined-logout %}?redirect={{PATH}}'>Logout</a>
+            {% endif %}
+        </div>
+    </div>
+    <ul id='header_nav' class='nav'>
+        <li {% ifequal SITE_SECTION "qa" %}class='selected'{% endifequal %}><a href='{% url qa-main %}'>Questions</a></li>
+        <li {% ifequal SITE_SECTION "app" %}class='selected'{% endifequal %}><a href='{% url applications-main %}'>Apps</a></li>
+        <li {% ifequal SITE_SECTION "code" %}class='selected'{% endifequal %}><a href='{% url code-main %}'>Code</a></li>
+        <li {% ifequal SITE_SECTION "tutorials" %}class='selected'{% endifequal %}><a href='{% url tutorials-main %}'>Tutorials</a></li>
+        <li {% ifequal SITE_SECTION "tags" %}class='selected'{% endifequal %}><a href='{% url browse-tags %}'>Tags</a></li>
+        <li {% ifequal SITE_SECTION "community" %}class='selected'{% endifequal %}><a href='{% url community-browse-users %}'>Users</a></li>
+        <li {% ifequal SITE_SECTION "badges" %}class='selected'{% endifequal %}><a href='{% url django-badges-browse %}'>Badges</a></li>
+        <li class='right {% ifequal SUBSECTION "contribute" %}selected{% endifequal %}'><a href='{% url core-contribute %}'>Contribute</a></li>
+        <li class='right {% ifequal SUBSECTION "about" %}selected{% endifequal %}'><a href='{% url info-about %}'>About</a></li>
+    </ul>
+</div>

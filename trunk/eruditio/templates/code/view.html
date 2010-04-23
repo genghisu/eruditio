@@ -1,0 +1,70 @@
+{% extends "split_header_template.html" %}
+{% load ajax %}
+{% load overlay %}
+{% load comment_tags %}
+{% load markup %}
+{% load django_metatagging_tags %}
+{% load code_highlight_tags %}
+
+{% block content_header %}
+    <h2>{{code.name}}</h2>
+{% endblock %}
+
+{% block main_content %}
+    {% with code_content_type as node_content_type %}
+    {% with code_model as model %}
+    {% with code as node %}
+    <div id='code_wrapper' class='view_wrapper content_wrapper'>
+        <div class='top'>
+            <div class='left'>  
+                <div id='code_{{code.id}}_vote_wrapper' class='voting'>
+                    {% with "standard" as vote_class %}
+                        {% include "django_multivoting/standard_vote.html" %}
+                    {% endwith %}
+                </div>
+                <div class='full_view'>
+                    <a href='{% url code-view-code-full node.id %}'>
+                        <img src='{{STATIC_URL}}img/plus-icon.png'></img>
+                        <span>Full View</span>
+                    </a>
+                </div>
+            </div>
+            <div class='right'>
+                <div class='description markdown_enabled'>
+                    {{code.description|markdown|highlight_markdown|safe}}
+                </div>
+                <div class='code_body'>
+                    {% highlight_python code.code %}
+                </div>
+                {% include "code/elements/additional_info.html" %}
+                {% include "code/elements/actions.html" %}
+            </div>
+        </div>
+        <div class='bottom'>
+            <div class="tabbed_header_wrapper">
+                <h3>Comments</h3>
+                <div class="clear"></div>
+            </div>
+            {% comments node_content_type model node.id "compact" %}
+        </div>
+    </div>
+    {% endwith %}
+    {% endwith %}
+    {% endwith %}
+{% endblock %}
+
+{% block sidebar %}
+    {% with code as node %}
+    <div class='right_wrapper'>
+        {% associated_tags_for_object node %}
+        {% related_objects node %}
+    </div>
+   {% endwith %}
+{% endblock %}
+
+{% block overlays %}
+    {{block.super}}
+    {% include "overlays/retag_overlay.html" %}
+    {% include "overlays/flag_overlay.html" %}
+    {% include "overlays/reputation_overlay.html" %}
+{% endblock %}

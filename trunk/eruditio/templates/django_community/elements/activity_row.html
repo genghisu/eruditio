@@ -1,0 +1,24 @@
+{% load text %}
+
+<div class='userhistory_row'>  
+    <div class='time'>
+        {{history.date_created|timesince}}
+    </div>
+    <div class='action'>
+        {{history.action.name}}
+    </div>
+    <div class='object'>
+        <a href='{% url content-redirect-by-id history.content_type.id history.object_id %}'>
+            {% if history.object.name %}
+                {% limit_text history.object.name 100 "" %}
+            {% else %}
+                {% ifequal history.action.name "awarded" %}
+                    {{history.object.badge.name}}
+                {% endifequal %}
+                {% ifequal history.action.name "comment" %}
+                    {{history.object.content_object.name}}
+                {% endifequal %}
+            {% endif %}
+        </a>
+    </div>
+</div>

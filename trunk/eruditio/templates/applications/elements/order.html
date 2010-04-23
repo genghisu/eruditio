@@ -1,0 +1,6 @@
+<ul>
+    <li{% ifequal sort "most_recent" %} class='selected'{% endifequal %}><a href='{% url applications-list-app "most_recent" %}' class='sort_option'>most recent</a></li>
+    <li{% ifequal sort "most_active" %} class='selected'{% endifequal %}><a href='{% url applications-list-app "most_active" %}' class='sort_option'>most active</a></li>
+    <li{% ifequal sort "most_discussed" %} class='selected'{% endifequal %}><a href='{% url applications-list-app "most_discussed" %}' class='sort_option'>most discussed</a></li>
+    <li{% ifequal sort "highest_rated" %} class='selected'{% endifequal %}><a href='{% url applications-list-app "highest_rated" %}' class='sort_option'>highest rated</a></li>
+</ul>

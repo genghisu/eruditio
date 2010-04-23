@@ -1,0 +1,8 @@
+{% for answer in current_page.object_list %}
+    {% with answer_content_type as node_content_type %}
+    {% with answer_model as model %}
+        {% include "django_qa/elements/answer_row.html" %}
+    {% endwith %}
+    {% endwith %}
+{% endfor %}
+{% include "django_utils/pagination/pagination.html" %}

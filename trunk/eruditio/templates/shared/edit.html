@@ -1,0 +1,28 @@
+{% extends "split_header_template.html" %}
+{% load javascript %}
+{% load modcontext %}
+
+{% block content_header %}
+    <h2>Edit {{model}}</h2>
+{% endblock %}
+
+{% block main_content %}
+    <div class='content_wrapper edit_wrapper'>
+        <form class='edit_form' action='' method='POST'>
+            {{form.as_div}}
+            {% block form_extras %}
+            {% endblock %}
+            <div class='submit_row'>
+                <input type='submit' value='Submit' name='submit' class='submit'>
+                <a href='{{object_url}}' class='submit'>Cancel</a>
+            </div>
+            {% block form_scripts %}
+            {% endblock %}
+        </form>
+     </div>
+{% endblock %}
+
+{% block sidebar %}
+    <div class='right_wrapper'>
+    </div>
+{% endblock %}

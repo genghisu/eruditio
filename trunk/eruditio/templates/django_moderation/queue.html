@@ -1,0 +1,16 @@
+{% extends "standard_header_template.html" %}
+{% load ajax %}
+
+{% block content_header %}
+    <h2>Moderation Queue</h2>
+{% endblock %}
+
+{% block main_content %}
+   <div id='moderation_queue_wrapper' class='content_wrapper'>
+        {% if node %}
+            {% include node.template %}
+        {% else %}
+            There are currently no items to be moderated.
+        {% endif %}
+    </div>
+{% endblock %}

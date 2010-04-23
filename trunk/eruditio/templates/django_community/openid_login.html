@@ -1,0 +1,82 @@
+{% extends "split_header_template.html" %}
+
+{% block extrahead %}
+{{block.super}}
+<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}openid/openid.css" />
+<script src="{{STATIC_URL}}openid/jquery.openid.js" type="text/javascript"></script>
+{% endblock %}
+
+{% block content_header %}
+    <h2>Log in Using OpenID</h2>
+{% endblock %}
+
+{% block main_content %}
+    <div class='content_wrapper info_wrapper'>
+        {% if community_user %}
+            <p>You are currently a registered user.  You can log out using the current OpenID that is associated with your account.  Logging in with a different OpenID will associate it with your account.
+        {% else %}
+            <p>You're currently an anonymous user.  If you want to access the more advanced features of the site, then enter your <a href='http://openid.net/what/' class='highlighted'>OpenID</a>.</p>
+        {% endif %}
+        
+        <p>
+        {% if error %}
+            <p>Unable to log in with your OpenID provider</p>
+            {% ifequal error 'empty_id' %}
+                An empty OpenID identifier was provided.
+            {% endifequal %}
+            {% ifequal error 'discovery' %}
+                The OpenID provider you specified could not authenticate you.
+            {% endifequal %}
+        {% endif %}
+       <form class="openid" method="post" action=""> 
+          <div><ul class="providers"> 
+              <li class="openid" title="OpenID"><img src="{{STATIC_URL}}openid/images/openidW.png" alt="icon" /> 
+              <span><strong>http://{your-openid-url}</strong></span></li> 
+              <li class="direct" title="Google"> 
+                    <img src="{{STATIC_URL}}openid/images/googleW.png" alt="icon" /><span>https://www.google.com/accounts/o8/id</span></li> 
+              <li class="direct" title="Yahoo"> 
+                    <img src="{{STATIC_URL}}openid/images/yahooW.png" alt="icon" /><span>http://yahoo.com/</span></li> 
+              <li class="username" title="AOL screen name"> 
+                    <img src="{{STATIC_URL}}openid/images/aolW.png" alt="icon" /><span>http://openid.aol.com/<strong>username</strong></span></li> 
+              <li class="username" title="MyOpenID user name"> 
+                    <img src="{{STATIC_URL}}openid/images/myopenid.png" alt="icon" /><span>http://<strong>username</strong>.myopenid.com/</span></li> 
+              <li class="username" title="Flickr user name"> 
+                    <img src="{{STATIC_URL}}openid/images/flickr.png" alt="icon" /><span>http://flickr.com/<strong>username</strong>/</span></li> 
+              <li class="username" title="Technorati user name"> 
+                    <img src="{{STATIC_URL}}openid/images/technorati.png" alt="icon" /><span>http://technorati.com/people/technorati/<strong>username</strong>/</span></li> 
+              <li class="username" title="Wordpress blog name"> 
+                    <img src="{{STATIC_URL}}openid/images/wordpress.png" alt="icon" /><span>http://<strong>username</strong>.wordpress.com</span></li> 
+              <li class="username" title="Blogger blog name"> 
+                    <img src="{{STATIC_URL}}openid/images/blogger.png" alt="icon" /><span>http://<strong>username</strong>.blogspot.com/</span></li> 
+              <li class="username" title="LiveJournal blog name"> 
+                    <img src="{{STATIC_URL}}openid/images/livejournal.png" alt="icon" /><span>http://<strong>username</strong>.livejournal.com</span></li> 
+              <li class="username" title="ClaimID user name"> 
+                    <img src="{{STATIC_URL}}openid/images/claimid.png" alt="icon" /><span>http://claimid.com/<strong>username</strong></span></li> 
+              <li class="username" title="Vidoop user name"> 
+                    <img src="{{STATIC_URL}}openid/images/vidoop.png" alt="icon" /><span>http://<strong>username</strong>.myvidoop.com/</span></li> 
+              <li class="username" title="Verisign user name"> 
+                    <img src="{{STATIC_URL}}openid/images/verisign.png" alt="icon" /><span>http://<strong>username</strong>.pip.verisignlabs.com/</span></li> 
+          </ul></div> 
+          <fieldset> 
+          <label for="openid_username">Enter your <span>Provider user name</span></label> 
+          <div><span></span><input type="text" name="openid_username" /><span></span> 
+          <input type="submit" value="Login" /></div> 
+          </fieldset> 
+          <fieldset> 
+          <label for="openid_identifier">Enter your <a class="openid_logo" href="http://openid.net">OpenID</a></label> 
+          <div><input type="text" name="openid_identifier" /> 
+          <input type="submit" value="Login" /></div> 
+          </fieldset> 
+        </form>
+        <script type="text/javascript">  $(function() {$("form.openid").openid();});</script>
+        <div>  
+           If you do not have and do not want to acquire an OpenID, <a href='{% url django-community-standard-login %}?redirect={{redirect}}'>login here</a>.
+        </div>
+    </div>
+{% endblock %}
+
+{% block sidebar %}
+    <div class='right_wrapper'>
+        {% include "django_community/elements/openid.html" %}
+    </div>
+{% endblock %}

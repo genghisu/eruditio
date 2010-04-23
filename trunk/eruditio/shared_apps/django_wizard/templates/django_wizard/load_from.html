@@ -1,0 +1,18 @@
+{% extends "django_wizard/base.html" %}
+
+{% block branding %}
+<h1 id="site-name">Django Wizard: Load Configs From..</h1>
+{% endblock %}
+
+{% block bodyclass %}dashboard{% endblock %}
+{% block coltype %}colMS{% endblock %}
+
+{% block content %}
+<div id="content-main">
+<div id="content" class="colM">
+    {% for file in config_files %}
+        <a href='{% url django-wizard-load-configs file %}'>{{file}}</a>
+    {% endfor %}
+</div>
+</div>
+{% endblock %}

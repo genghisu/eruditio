@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class='content yui-t4'>
+    <div id='content_header'>
+        {% block content_header %}
+        {% endblock %}
+    </div>
+    <div id="yui-main"> 
+        {% block main %}
+            <div class='mono_wrapper'>
+                <div class='content'>
+                    {% block main_content %}
+                    {% endblock %}
+                </div>
+                <div class='clear'>
+                </div>
+            </div>
+        {% endblock %}
+    </div> 
+</div>
+{% endblock %}

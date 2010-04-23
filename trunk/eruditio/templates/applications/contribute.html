@@ -1,0 +1,30 @@
+{% extends "split_header_template.html" %}
+{% load javascript %}
+
+{% block extrastyle %}
+  {{ block.super }}
+  {% include "django_relatedcontent/js/django_relatedcontent.js" %}
+{% endblock %}
+
+{% block content_header %}
+    <h2>Contribute App</h2>
+{% endblock %}
+
+{% block main_content %}
+   <div class='content_wrapper'>
+        <form id='contribute_app_form' class='contribute_form' action='' method='POST'>
+            {{form.as_div}}
+            <div class='submit_row'>
+                <input type='submit' value='Submit App' name='submit' class='submit'>
+            </div>
+            <div class='clear'></div>
+        </form>
+        {% wmd id_description app_form_wmd_preview %}
+    </div>
+{% endblock %}
+
+{% block sidebar %}
+    <div class='right_wrapper'>
+        {% include "sidebar/contribute_guidelines.html" %}
+    </div>
+{% endblock %}

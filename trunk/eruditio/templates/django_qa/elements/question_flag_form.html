@@ -1,0 +1,4 @@
+{% with question_model as model %}
+{% url qa-flag-question node.id as flag_url %}
+    {% include "django_moderation/flag_form.html" %}
+{% endwith %}

@@ -1,0 +1,9 @@
+{% url qa-view-question node.id as object_url %}
+{% url qa-flag-question question.id as flag_url %}
+{% url qa-retag-question node.id as retag_url %}
+{% url qa-edit-question node.id as edit_url %}
+
+ <div class='actions'>
+    <a href='#qa_form' class='img_link action add_comment'>answer</a>
+    {% include "shared/actions.html" %}
+</div>

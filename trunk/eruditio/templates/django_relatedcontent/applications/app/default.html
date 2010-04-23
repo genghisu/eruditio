@@ -1,0 +1,13 @@
+{% load relatedcontent_tags %}
+{% load modcontext %}
+
+{% static_with relatedcontent_item_ selectable_content_type _ selectable_object.id as item_id %}
+{% static_with relatedcontent_item_close_link_ selectable_content_type _ selectable_object.id as link_id %}
+<div id='{{item_id}}' class='relatedcontent_item'>
+    <img src='{{STATIC_URL}}img/app-icon.png'></img>
+    {{selectable_object.name}}
+    <a id='{{link_id}}' class='relatedcontent_close_link' href="#">[X]</a>
+    {% remove_target_item link_id data_id target_id associate_url base_content_type base_object_id selectable_content_type selectable_object.id usage %} 
+</div>
+{% endstatic_with %}
+{% endstatic_with %}

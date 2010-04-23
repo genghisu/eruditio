@@ -1,0 +1,4 @@
+{% for content in current_page.object_list %}
+    {% include "django_community/elements/activity_row.html" %}
+{% endfor %}
+{% include "util/ajax_pagination.html" %}
